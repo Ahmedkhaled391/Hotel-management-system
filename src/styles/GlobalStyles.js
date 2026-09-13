@@ -1,3 +1,5 @@
+import { createGlobalStyle } from "styled-components";
+
 /*
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,17 +15,18 @@
 
 /* Colors adapted from https://tailwindcss.com/docs/customizing-colors */
 
+const GlobalStyles = createGlobalStyle`
 :root {
-  /* Indigo */
-  --color-brand-50: #eef2ff;
-  --color-brand-100: #e0e7ff;
-  --color-brand-200: #c7d2fe;
-  --color-brand-500: #6366f1;
+    /* Indigo */
+    --color-brand-50: #eef2ff;
+    --color-brand-100: #e0e7ff;
+    --color-brand-200: #c7d2fe;
+    --color-brand-500: #6366f1;
   --color-brand-600: #4f46e5;
   --color-brand-700: #4338ca;
   --color-brand-800: #3730a3;
   --color-brand-900: #312e81;
-
+  
   /* Grey */
   --color-grey-0: #fff;
   --color-grey-50: #f9fafb;
@@ -36,7 +39,7 @@
   --color-grey-700: #374151;
   --color-grey-800: #1f2937;
   --color-grey-900: #111827;
-
+  
   --color-blue-100: #e0f2fe;
   --color-blue-700: #0369a1;
   --color-green-100: #dcfce7;
@@ -47,7 +50,7 @@
   --color-silver-700: #374151;
   --color-indigo-100: #e0e7ff;
   --color-indigo-700: #4338ca;
-
+  
   --color-red-100: #fee2e2;
   --color-red-700: #b91c1c;
   --color-red-800: #991b1b;
@@ -57,12 +60,12 @@
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.12);
-
+  
   --border-radius-tiny: 3px;
   --border-radius-sm: 5px;
   --border-radius-md: 7px;
   --border-radius-lg: 9px;
-
+  
   /* For dark mode */
   --image-grayscale: 0;
   --image-opacity: 100%;
@@ -71,32 +74,33 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-
-  /* Creating animations for dark mode */
-  transition: background-color 0.3s, border 0.3s;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    
+    /* Creating animations for dark mode */
+    transition: background-color 0.3s, border 0.3s;
 }
 
 html {
-  font-size: 62.5%;
+    font-size: 62.5%;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  color: var(--color-grey-700);
+    font-family: "Poppins", sans-serif;
+    color: var(--color-grey-700);
 
-  transition: color 0.3s, background-color 0.3s;
-  min-height: 100vh;
-  line-height: 1.5;
-  font-size: 1.6rem;
+    transition: color 0.3s, background-color 0.3s;
+    min-height: 100vh;
+    line-height: 1.5;
+    font-size: 1.6rem;
 }
 
 input,
 button,
 textarea,
 select {
+    
   font: inherit;
   color: inherit;
 }
@@ -194,3 +198,5 @@ FOR DARK MODE
 --image-grayscale: 10%;
 --image-opacity: 90%;
 */
+`;
+export default GlobalStyles
