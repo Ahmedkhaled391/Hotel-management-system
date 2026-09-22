@@ -5,14 +5,16 @@ import supabase from "./supabase";
 export async function getBooking(id) {
   const { data, error } = await supabase
     .from("bookings")
-    .select("*")
+    .select("*,cabins(*),guests(*)")
     .eq("id", id)
     .single();
+    // select("*") only gets columns from the current table (bookings)
 
   if (error) {
     console.error(error);
     throw new Error("Booking not found");
   }
+  //console.log(data)
 
   return data;
 }
@@ -34,9 +36,6 @@ export async function getBookings({ filter, sortBy, method, page }) {
     });
     // Query
   if (page) {
-    // page 2
-    // from = 1 * 9 = 9
-    // to = 17
     const from = (page - 1) * (PAGE_SIZE - 1); 
     const to = from + PAGE_SIZE - 1;
     query = query.range(from, to);
