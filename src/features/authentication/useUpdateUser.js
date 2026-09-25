@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createEditCabin } from "../../services/apiCabins";
+//import { createEditCabin } from "../../services/apiCabins";
 import { toast } from "react-hot-toast";
 import { updateCurrentUser } from "../../services/apiAuth";
 
@@ -12,7 +12,7 @@ export default function useUpdateUser() {
     onSuccess: (data) => {
       console.log(data);
       toast.success("Profile successfully updated");
-      //  queryClient.setQueryData("user", user);
+      //queryClient.setQueryData(["user"], user);
       queryClient.invalidateQueries({
         queryKey: ["user"],
       });
