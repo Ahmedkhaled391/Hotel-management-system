@@ -8,7 +8,7 @@ export async function getBooking(id) {
     .select("*,cabins(*),guests(*)")
     .eq("id", id)
     .single();
-    // select("*") only gets columns from the current table (bookings)
+  // select("*") only gets columns from the current table (bookings)
 
   if (error) {
     console.error(error);
@@ -20,7 +20,6 @@ export async function getBooking(id) {
 }
 
 export async function getBookings({ filter, sortBy, method, page }) {
-  
   let query = supabase
     .from("bookings")
     .select(
@@ -34,9 +33,9 @@ export async function getBookings({ filter, sortBy, method, page }) {
     query = query.order(sortBy.field, {
       ascending: sortBy.direction === "asc",
     });
-    // Query
+  // Query
   if (page) {
-    const from = (page - 1) * (PAGE_SIZE - 1); 
+    const from = (page - 1) * (PAGE_SIZE - 1);
     const to = from + PAGE_SIZE - 1;
     query = query.range(from, to);
   }
@@ -45,7 +44,6 @@ export async function getBookings({ filter, sortBy, method, page }) {
     console.log(error);
     throw new Error("Bookings couldn't be loaded");
   }
-
 
   return { data, count };
 }
@@ -70,7 +68,6 @@ export async function getBookingsAfterDate(date) {
 export async function getStaysAfterDate(date) {
   const { data, error } = await supabase
     .from("bookings")
-    // .select('*')
     .select("*, guests(fullName)")
     .gte("startDate", date)
     .lte("startDate", getToday());
